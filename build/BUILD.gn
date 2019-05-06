@@ -8,6 +8,7 @@ if (target_os == "wasm") {
             "-m32",
             "-O2",
             "-g2",
+            "--emit-symbol-map",
             "-s", "NO_EXIT_RUNTIME=1",
             "-Wno-ignored-attributes", "-Wno-deprecated-register", "-Wno-nonportable-include-path",
             #"-s ASSERTIONS=1 -g3",
@@ -26,6 +27,7 @@ if (target_os == "wasm") {
         ldflags = [
             "-O2",
             "-g2",
+            "--emit-symbol-map",
             "-s", "NO_EXIT_RUNTIME=1",
             "-s", "EXPORTED_FUNCTIONS=['_jsc_eval', '_main']",
             "-s", "EXTRA_EXPORTED_RUNTIME_METHODS=['cwrap']",

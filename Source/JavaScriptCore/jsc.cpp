@@ -3558,7 +3558,8 @@ static void runInteractive(GlobalObject* globalObject)
     //    return;
     //SourceOrigin sourceOrigin(resolvePath(directoryName.value(), ModuleName("interpreter")));
 	SourceOrigin sourceOrigin("dummy");
-    
+        printf("%s", interactivePrompt);
+        fflush(stdout);
     bool shouldQuit = false;
     while (!shouldQuit) {
 #if HAVE(READLINE) && !RUNNING_FROM_XCODE
@@ -3590,7 +3591,6 @@ static void runInteractive(GlobalObject* globalObject)
         NakedPtr<Exception> evaluationException;
         JSValue returnValue = evaluate(globalObject->globalExec(), makeSource(source, sourceOrigin), JSValue(), evaluationException);
 #else
-        printf("%s", interactivePrompt);
         Vector<char, 256> line;
         int c;
         while ((c = getchar()) != EOF) {
@@ -3610,6 +3610,8 @@ static void runInteractive(GlobalObject* globalObject)
         else
             printf("%s\n", returnValue.toWTFString(globalObject->globalExec()).utf8().data());
 
+        printf("%s", interactivePrompt);
+        fflush(stdout);
         scope.clearException();
         globalObject->vm().drainMicrotasks();
     }
