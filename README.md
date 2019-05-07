@@ -1,13 +1,41 @@
-**JSC.js** is a JavaScript engine which can run on top of you browser's JavaScript engine. It's based on the JavaScript engine (JavaScriptCore) of WebKit and compiled to wasm with emscripten. Therefore, if you're using Safari, you are literally running its JavaScript engine on top of itself.
+# JavaScriptCore
 
-The size of JSC.wasm is around 4MB (compressed js and mem file).
+The JavaScript engine that powers Safari.
 
-## Demo: [Link](https://mbbill.github.io/JSC.js/demo/index.html)
+You can install JavaScriptCore with:
 
-## ScreenShot
-![](https://sites.google.com/site/mbbill/jsc3.png)
+```bash
+wapm install -g jsc
+```
 
-## Build
+## Running
+
+You can run the `jsc` shell:
+
+```bash
+$ jsc
+>>> function multiply(a, b) { return a * b; }
+undefined
+>>> multiply(10, 20)
+200
+>>> 0.1 + 0.2
+0.30000000000000004
+>>> Date();
+Mon Apr 15 2019 19:05:43 GMT-c100 (UTC)
+>>>
+```
+
+## Building from Source
+
+You will need Emscripten SDK (emsdk), Python, Ruby, and Ninja to build the `php.wasm` file.
+
+Steps:
+
+1. Setup emsdk (>= 1.38.11), see [Installation Instructions](https://github.com/juj/emsdk#installation-instructions)
+2. Run `bash build.sh`
+
+Manual step-by-step instructions:
+
 ### Preparation on Mac
 - install emscripten
 - install python, ruby, ninja, etc.

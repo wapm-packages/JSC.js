@@ -1,0 +1,15 @@
+[package]
+name = "jsc"
+version = "0.1.0"
+description = "The JavaScript engine that powers Safari"
+readme = "README.md"
+repository = "https://github.com/wapm-packages/jsc"
+
+[[module]]
+name = "jsc"
+source = "demo/jsc.wasm"
+abi = "emscripten"
+
+[[command]]
+name = "jsc"
+module = "jsc"
