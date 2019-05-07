@@ -2,7 +2,7 @@
 
 The JavaScript engine that powers Safari.
 
-You can install JavaScriptCore with:
+You can install JavaScriptCore with [wapm](https://wapm.io/help/install):
 
 ```bash
 wapm install -g jsc
